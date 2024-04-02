@@ -6,6 +6,7 @@ PORT = 65456
 #tcp echo server
 #지정된 포트번호에 bind하고 client가 connect() 요청 보내오기를 listen()하고 있다가 accept()
 #clientSocket은 server측에서 client와 통신하기 위해서 생성한 새로운 socket
+#recv(1024)의 의미는 메시지가 오면 blocking하는데 최대가 1024bytes https://stackoverflow.com/questions/7174927/when-does-socket-recvrecv-size-return
 
 print('> echo-server is activated')
 with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as serverSocket:

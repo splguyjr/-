@@ -1,6 +1,7 @@
 import zmq
 
 #client는 zmq.Context()로 객체 생성하고 zmq.REQ패턴으로 소켓을 열고 connect를 통해 서버에 연결
+#연속으로 두번 이상 send를 할 순 없음
 
 context = zmq.Context()
 
@@ -12,6 +13,7 @@ socket.connect("tcp://localhost:5555")
 #zmq는 byte형태로 통신하기 때문에 send(b'str')이나 send_string('str')형태로 보내주어야 함.
 for request in range(10):
     print("Sending request %s ..." % request)
+    
     socket.send_string('Hello')
     
     message = socket.recv()
